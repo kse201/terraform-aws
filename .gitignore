@@ -1,0 +1,3 @@
+.terraform
+*.backup
+id_rsa*
