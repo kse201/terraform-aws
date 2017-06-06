@@ -16,7 +16,7 @@ module "ec2" {
   subnet_id  = "${module.vpc.subnet_id}"
   global_ip  = "${var.global_ip}"
   cidr       = "172.1.1.0/24"
-  node_count = 2
+  node_count = 0
 }
 
 module "vpc" {

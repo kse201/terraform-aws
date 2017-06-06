@@ -3,7 +3,7 @@ resource "aws_instance" "bastion" {
   instance_type               = "${var.instance_type}"
   key_name                    = "${var.key_name}"
   subnet_id                   = "${var.subnet_id}"
-  vpc_security_group_ids      = ["${aws_security_group.ssh.id}", "${aws_security_group.internal.id}"]
+  vpc_security_group_ids      = ["${aws_security_group.ssh.id}", "${aws_security_group.internal.id}", "${aws_security_group.egress.id}"]
   monitoring                  = true
   associate_public_ip_address = true
 
