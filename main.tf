@@ -8,13 +8,15 @@ module "keypair" {
   public_key = "${file("./id_rsa_ec2.pub")}"
 }
 
-module "instance" {
-  source    = "./ec2/instance"
-  key_name  = "${module.keypair.name}"
-  name      = ""
-  vpc_id    = "${module.vpc.id}"
-  subnet_id = "${module.vpc.subnet_id}"
-  global_ip = "${var.global_ip}"
+module "ec2" {
+  source = "./ec2/instance"
+
+  key_name   = "${module.keypair.name}"
+  vpc_id     = "${module.vpc.id}"
+  subnet_id  = "${module.vpc.subnet_id}"
+  global_ip  = "${var.global_ip}"
+  cidr       = "172.1.1.0/24"
+  node_count = 2
 }
 
 module "vpc" {
@@ -32,10 +34,6 @@ terraform {
   }
 }
 
-output "instance_id" {
-  value = "${module.instance.id}"
-}
-
-output "public_dns" {
-  value = "${module.instance.public_dns}"
+output "bastion_dns" {
+  value = "${module.ec2.bastion_public_dns}"
 }

@@ -1,14 +1,14 @@
 output "id" {
   description = "Instance ID"
-  value       = "${aws_instance.instance.id}"
+  value       = "${aws_instance.bastion.id}"
 }
 
-output "public_dns" {
-  description = "Public DNS name"
-  value       = "${aws_instance.instance.public_dns}"
+output "bastion_public_dns" {
+  description = "Public DNS name for Bastion"
+  value       = "${aws_instance.bastion.public_dns}"
 }
 
-output "public_ip" {
-  description = "Public IP address"
-  value       = "${aws_instance.instance.public_ip}"
+output "bastion_public_ip" {
+  description = "Public IP address for Bastion"
+  value       = "${aws_instance.bastion.public_ip}"
 }
