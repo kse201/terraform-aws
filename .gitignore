@@ -1,3 +1,6 @@
 .terraform
+.vagrant
+terraform.tfvars
+terraform_output.json
 *.backup
 id_rsa*

@@ -2,7 +2,7 @@ resource "aws_security_group" "ssh" {
   name        = "allow_ssh"
   description = "Allow SSH"
 
-  vpc_id = "${var.vpc_id}"
+  vpc_id = "${aws_vpc.vpc.id}"
 
   tags {
     Name = "Allow SSH"
@@ -17,13 +17,13 @@ resource "aws_security_group" "ssh" {
 }
 
 resource "aws_security_group" "internal" {
-  name        = "allow_internal"
+  name        = "internal"
   description = "Allow all packet in internal"
 
-  vpc_id = "${var.vpc_id}"
+  vpc_id = "${aws_vpc.vpc.id}"
 
   tags {
-    Name = "Allow Internal"
+    Name = "Internal"
   }
 
   ingress {
@@ -45,10 +45,10 @@ resource "aws_security_group" "egress" {
   name        = "allow_egress"
   description = "Allow all egress packet"
 
-  vpc_id = "${var.vpc_id}"
+  vpc_id = "${aws_vpc.vpc.id}"
 
   tags {
-    Name = "Allow egrss"
+    Name = "Allow egress"
   }
 
   egress {

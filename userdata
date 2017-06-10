@@ -1,0 +1,16 @@
+#cloud-config
+
+preserve_hostname: false
+hostname: ec2.vagrant
+fqdn: ec2.vagrant.example.localdomain
+manage_etc_hosts: true
+
+repo_update: true
+repo_upgrade: all
+
+timezone: Asia/Tokyo
+
+runcmd:
+  - sudo yum update -y
+  - sudo yum install -y git vim
+  - git clone https://github.com/kse201/misc
